@@ -8,4 +8,14 @@ models:
   Proyect:
     proyect_name: string:50
     relationships:
-      hasMany: Label
+      hasMany: Label, ClokinTime
+
+  ClokinTime:
+    start_time: time
+    end_time: time
+    labels: json
+    proyect_id: foreignId
+    user_id: foreignId
+    relationships:
+      belongsTo: Proyect, User
+    
