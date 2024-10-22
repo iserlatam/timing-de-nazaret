@@ -1,0 +1,11 @@
+models:
+  Label:
+    label_name: string:40
+    proyect_id: foreignId
+    relationships:
+      belongsTo: Proyect
+
+  Proyect:
+    proyect_name: string:50
+    relationships:
+      hasMany: Label

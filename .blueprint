@@ -1,0 +1,4 @@
+models:
+    Registro: { descripcion: string, horas_trabajadas: integer, notas_adicionales: text, user_id: 'biginteger unsigned nullable default:NULL' }
+    TimeEntrie: {  }
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
