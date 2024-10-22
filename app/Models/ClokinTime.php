@@ -18,6 +18,7 @@ class ClokinTime extends Model
     protected $fillable = [
         'start_time',
         'end_time',
+        'total_time',
         'labels',
         'proyect_id',
         'user_id',

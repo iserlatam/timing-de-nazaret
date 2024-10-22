@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->time('start_time');
             $table->time('end_time');
+            $table->time('total_time')->nullable();
             $table->json('labels');
             $table->foreignId('proyect_id');
             $table->foreignId('user_id');

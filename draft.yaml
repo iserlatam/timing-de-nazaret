@@ -13,9 +13,9 @@ models:
   ClokinTime:
     start_time: time
     end_time: time
+    total_time: time nullable
     labels: json
     proyect_id: foreignId
     user_id: foreignId
     relationships:
       belongsTo: Proyect, User
-    

@@ -2,9 +2,9 @@ created:
     - database/factories/LabelFactory.php
     - database/factories/ProyectFactory.php
     - database/factories/ClokinTimeFactory.php
-    - database/migrations/2024_10_22_153301_create_labels_table.php
-    - database/migrations/2024_10_22_153302_create_proyects_table.php
-    - database/migrations/2024_10_22_153303_create_clokin_times_table.php
+    - database/migrations/2024_10_22_154354_create_labels_table.php
+    - database/migrations/2024_10_22_154355_create_proyects_table.php
+    - database/migrations/2024_10_22_154356_create_clokin_times_table.php
     - app/Models/Label.php
     - app/Models/Proyect.php
     - app/Models/ClokinTime.php
@@ -14,4 +14,4 @@ models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
     Label: { label_name: 'string:40', proyect_id: foreignId, relationships: { belongsTo: Proyect } }
     Proyect: { proyect_name: 'string:50', relationships: { hasMany: 'Label, ClokinTime' } }
-    ClokinTime: { start_time: time, end_time: time, labels: json, proyect_id: foreignId, user_id: foreignId, relationships: { belongsTo: 'Proyect, User' } }
+    ClokinTime: { start_time: time, end_time: time, total_time: 'time nullable', labels: json, proyect_id: foreignId, user_id: foreignId, relationships: { belongsTo: 'Proyect, User' } }

@@ -25,6 +25,7 @@ class ClokinTimeFactory extends Factory
         return [
             'start_time' => $this->faker->time(),
             'end_time' => $this->faker->time(),
+            'total_time' => $this->faker->time(),
             'labels' => '{}',
             'proyect_id' => Proyect::factory(),
             'user_id' => ::factory(),
