@@ -19,9 +19,9 @@ return new class extends Migration
             $table->time('total_horas')->nullable();
             $table->foreignId('etiqueta'); 
             $table->foreignId('proyecto'); 
-            $table->foreignId('usuario'); 
-            $table->dateTime('fecha_creacion');
-            $table->dateTime('fecha_modificacion');
+            $table->foreignId('usuario')->nullable(); 
+            $table->dateTime('fecha_creacion')->nullable();
+            $table->dateTime('fecha_modificacion')->nullable();
         });
     }
 
