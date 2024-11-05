@@ -37,11 +37,6 @@ class ClockinRegister extends Model
         'proyect_id' => 'integer',
     ];
 
-    public function proyect(): BelongsTo
-    {
-        return $this->belongsTo(Proyect::class);
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ClokinTimeResource\Pages;
-use App\Filament\Resources\ClokinTimeResource\RelationManagers;
-use App\Models\ClokinTime;
+use App\Filament\Resources\CategoryResource\Pages;
+use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ClokinTimeResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = ClokinTime::class;
+    protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,21 +23,14 @@ class ClokinTimeResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('description')
+                Forms\Components\TextInput::make('name')
                     ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TimePicker::make('start_time')
-                    ->required(),
-                Forms\Components\TimePicker::make('end_time')
-                    ->required(),
-                Forms\Components\TextInput::make('total_time'),
+                    ->maxLength(50),
+                Forms\Components\TextInput::make('color')
+                    ->required()
+                    ->maxLength(255)
+                    ->default('primary'),
                 Forms\Components\TextInput::make('labels')
-                    ->required(),
-                Forms\Components\Select::make('proyect_id')
-                    ->relationship('proyect', 'id')
-                    ->required(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
                     ->required(),
             ]);
     }
@@ -46,15 +39,10 @@ class ClokinTimeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('start_time'),
-                Tables\Columns\TextColumn::make('end_time'),
-                Tables\Columns\TextColumn::make('total_time'),
-                Tables\Columns\TextColumn::make('proyect.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('color')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -87,9 +75,9 @@ class ClokinTimeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListClokinTimes::route('/'),
-            'create' => Pages\CreateClokinTime::route('/create'),
-            'edit' => Pages\EditClokinTime::route('/{record}/edit'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }
