@@ -16,6 +16,7 @@ class ClokinTime extends Model
      * @var array
      */
     protected $fillable = [
+        'description',
         'start_time',
         'end_time',
         'total_time',

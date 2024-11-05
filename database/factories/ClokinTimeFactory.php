@@ -23,6 +23,7 @@ class ClokinTimeFactory extends Factory
     public function definition(): array
     {
         return [
+            'description' => $this->faker->text(),
             'start_time' => $this->faker->time(),
             'end_time' => $this->faker->time(),
             'total_time' => $this->faker->time(),

@@ -11,6 +11,7 @@ models:
       hasMany: Label, ClokinTime
 
   ClokinTime:
+    description: string:45
     start_time: time
     end_time: time
     total_time: time nullable
