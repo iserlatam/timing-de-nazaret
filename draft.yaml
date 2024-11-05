@@ -1,22 +1,24 @@
 models:
-  Label:
-    label_name: string:40
-    proyect_id: foreignId
-    relationships:
-      belongsTo: Proyect
+  # Label:
+  #   name: string:40
+  #   color: string default:primary
+  #   relationships:
+  #     belongsToMany: Category
 
-  Proyect:
-    proyect_name: string:50
+  Category:
+    name: string:50
+    color: string default:primary
+    labels: json
     relationships:
-      hasMany: Label, ClokinTime
+      hasMany: ClockinRegister
 
-  ClokinTime:
-    description: string:45
+  ClockinRegister:
+    title: string:45
+    description: text nullable
     start_time: time
     end_time: time
     total_time: time nullable
-    labels: json
-    proyect_id: foreignId
+    category_id: foreignId
     user_id: foreignId
     relationships:
       belongsTo: Proyect, User

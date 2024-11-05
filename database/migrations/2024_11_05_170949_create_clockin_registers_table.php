@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('labels', function (Blueprint $table) {
+        Schema::create('clockin_registers', function (Blueprint $table) {
             $table->id();
-            $table->string('label_name', 40);
+            $table->string('title', 45);
+            $table->text('description')->nullable();
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->time('total_time')->nullable();
+            $table->string('category_id');
+            $table->foreignId('user_id');
             $table->foreignId('proyect_id');
             $table->timestamps();
         });
@@ -24,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('labels');
+        Schema::dropIfExists('clockin_registers');
     }
 };

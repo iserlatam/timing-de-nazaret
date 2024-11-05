@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Proyect extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,9 @@ class Proyect extends Model
      * @var array
      */
     protected $fillable = [
-        'proyect_name',
+        'name',
+        'color',
+        'labels',
     ];
 
     /**
@@ -26,15 +28,11 @@ class Proyect extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'labels' => 'array',
     ];
 
-    public function labels(): HasMany
+    public function clockinRegisters(): HasMany
     {
-        return $this->hasMany(Label::class);
-    }
-
-    public function clokinTimes(): HasMany
-    {
-        return $this->hasMany(ClokinTime::class);
+        return $this->hasMany(ClockinRegister::class);
     }
 }

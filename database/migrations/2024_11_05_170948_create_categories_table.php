@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registros', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
-            $table->integer('horas_trabajadas');
-            $table->text('notas_adicionales');
-            $table->foreignId('user_id')->nullable();
+            $table->string('name', 50);
+            $table->string('color')->default('primary');
+            $table->json('labels');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registros');
+        Schema::dropIfExists('categories');
     }
 };
